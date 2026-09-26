@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MovieHub</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0b0f;
+      color: white;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      background: #15151d;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #292936;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ff3d3d;
+      text-decoration: none;
+    }
+
+    nav .links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    nav .links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    nav .links a:hover {
+      color: #ff3d3d;
+    }
+
+
+    /* HERO */
+
+    .hero {
+      margin: 20px;
+      padding: 35px 25px;
+      min-height: 280px;
+      border-radius: 15px;
+
+      background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.75),
+          rgba(0, 0, 0, 0.75)
+        ),
+        url("https://picsum.photos/1200/600?random=20");
+
+      background-size: cover;
+      background-position: center;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: #cccccc;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      background: #ff3d3d;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+
+    /* SEARCH */
+
+    .search-box {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .search-box input {
+      width: 90%;
+      max-width: 600px;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      background: #1b1b24;
+      color: white;
+      outline: none;
+      font-size: 15px;
+    }
+
+
+    /* CATEGORIES */
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 5px 20px 20px;
+    }
+
+    .category-btn {
+      border: none;
+      background: #20202a;
+      color: white;
+      padding: 9px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .category-btn:hover {
+      background: #ff3d3d;
+    }
+
+
+    /* SECTION TITLE */
+
+    .section-title {
+      padding: 10px 20px 15px;
+      font-size: 24px;
+    }
+
+
+    /* MOVIE GRID */
+
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      padding: 0 20px 30px;
+    }
+
+    .movie-card {
+      background: #15151d;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .movie-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .movie-info {
+      padding: 12px;
+    }
+
+    .movie-info h3 {
+      margin-bottom: 7px;
+    }
+
+    .movie-info p {
+      color: #aaaaaa;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #ff3d3d;
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #15151d;
+      color: #888;
+      margin-top: 20px;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav .links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      nav .links a {
+        font-size: 14px;
+      }
+
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .hero {
+        margin: 15px;
+        padding: 30px 20px;
+      }
+
+      .movie-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0 10px 20px;
+      }
+
+      .movie-card img {
+        height: 220px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <a href="./index.html" class="logo">
+      🎬 MovieHub
+    </a>
+
+    <div class="links">
+
+      <a href="./index.html">
+        Home
+      </a>
+
+      <a href="#movies">
+        Movies
+      </a>
+
+      <a href="#categories">
+        Genres
+      </a>
+
+      <a href="./about.html">
+        About
+      </a>
+
+      <a href="./contact.html">
+        Contact
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- FEATURED MOVIE -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        Movie One
+      </h1>
+
+      <p>
+        Discover movies, ratings, genres and information
+        about your favorite films on MovieHub.
+      </p>
+
+      <p>
+        ⭐ 8.5/10 &nbsp; | &nbsp; Action &nbsp; | &nbsp; 2025
+      </p>
+
+      <a href="./details.html" class="hero-btn">
+        View Movie
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- SEARCH -->
+
+  <div class="search-box">
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="🔍 Search movies..."
+    >
+
+  </div>
+
+
+  <!-- CATEGORIES -->
+
+  <div class="categories" id="categories">
+
+    <button
+      class="category-btn"
+      onclick="filterMovies('all')">
+      All
+    </button>
+
+    <button
+      class="category-btn"
+      onclick="filterMovies('action')">
+      Action
+    </button>
+
+    <button
+      class="category-btn"
+      onclick="filterMovies('comedy')">
+      Comedy
+    </button>
+
+    <button
+      class="category-btn"
+      onclick="filterMovies('drama')">
+      Drama
+    </button>
+
+    <button
+      class="category-btn"
+      onclick="filterMovies('horror')">
+      Horror
+    </button>
+
+    <button
+      class="category-btn"
+      onclick="filterMovies('scifi')">
+      Sci-Fi
+    </button>
+
+    <button
+      class="category-btn"
+      onclick="filterMovies('romance')">
+      Romance
+    </button>
+
+  </div>
+
+
+  <!-- MOVIES -->
+
+  <h2 class="section-title" id="movies">
+    🎥 Latest Movies
+  </h2>
+
+
+  <div class="movie-grid" id="movieGrid">
+
+
+    <!-- MOVIE ONE -->
+
+    <div class="movie-card" data-category="action">
+
+      <img
+        src="https://picsum.photos/300/450?random=1"
+        alt="Movie One"
+      >
+
+      <div class="movie-info">
+
+        <h3>
+          Movie One
+        </h3>
+
+        <p>
+          Action • 2025 • ⭐ 8.5/10
+        </p>
+
+        <a
+          href="./details.html"
+          class="btn">
+          View Details
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- MOVIE TWO -->
+
+    <div class="movie-card" data-category="comedy">
+
+      <img
+        src="https://picsum.photos/300/450?random=2"
+        alt="Movie Two"
+      >
+
+      <div class="movie-info">
+
+        <h3>
+          Movie Two
+        </h3>
+
+        <p>
+          Comedy • 2025 • ⭐ 7.9/10
+        </p>
+
+        <a
+          href="./details2.html"
+          class="btn">
+          View Details
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- MOVIE THREE -->
+
+    <div class="movie-card" data-category="drama">
+
+      <img
+        src="https://picsum.photos/300/450?random=3"
+        alt="Movie Three"
+      >
+
+      <div class="movie-info">
+
+        <h3>
+          Movie Three
+        </h3>
+
+        <p>
+          Drama • 2025 • ⭐ 8.1/10
+        </p>
+
+        <a
+          href="./details3.html"
+          class="btn">
+          View Details
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- MOVIE FOUR -->
+
+    <div class="movie-card" data-category="action">
+
+      <img
+        src="https://picsum.photos/300/450?random=4"
+        alt="Movie Four"
+      >
+
+      <div class="movie-info">
+
+        <h3>
+          Movie Four
+        </h3>
+
+        <p>
+          Action • 2025 • ⭐ 8.3/10
+        </p>
+
+        <a
+          href="./details4.html"
+          class="btn">
+          View Details
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- MOVIE FIVE -->
+
+    <div class="movie-card" data-category="horror">
+
+      <img
+        src="https://picsum.photos/300/450?random=5"
+        alt="Movie Five"
+      >
+
+      <div class="movie-info">
+
+        <h3>
+          Movie Five
+        </h3>
+
+        <p>
+          Horror • 2025 • ⭐ 8.0/10
+        </p>
+
+        <a
+          href="./details5.html"
+          class="btn">
+          View Details
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- MOVIE SIX -->
+
+    <div class="movie-card" data-category="scifi">
+
+      <img
+        src="https://picsum.photos/300/450?random=6"
+        alt="Movie Six"
+      >
+
+      <div class="movie-info">
+
+        <h3>
+          Movie Six
+        </h3>
+
+        <p>
+          Sci-Fi • 2025 • ⭐ 8.6/10
+        </p>
+
+        <a
+          href="./details6.html"
+          class="btn">
+          View Details
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- MOVIE SEVEN -->
+
+    <div class="movie-card" data-category="romance">
+
+      <img
+        src="https://picsum.photos/300/450?random=7"
+        alt="Movie Seven"
+      >
+
+      <div class="movie-info">
+
+        <h3>
+          Movie Seven
+        </h3>
+
+        <p>
+          Romance • 2025 • ⭐ 7.8/10
+        </p>
+
+        <a
+          href="./details7.html"
+          class="btn">
+          View Details
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- MOVIE EIGHT -->
+
+    <div class="movie-card" data-category="drama">
+
+      <img
+        src="https://picsum.photos/300/450?random=8"
+        alt="Movie Eight"
+      >
+
+      <div class="movie-info">
+
+        <h3>
+          Movie Eight
+        </h3>
+
+        <p>
+          Drama • 2025 • ⭐ 8.4/10
+        </p>
+
+        <a
+          href="./details8.html"
+          class="btn">
+          View Details
+        </a>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      © 2025 MovieHub
+    </p>
+
+    <p>
+      Movie information website
+    </p>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    const searchInput =
+      document.getElementById("searchInput");
+
+    const movieCards =
+      document.querySelectorAll(".movie-card");
+
+
+    /* SEARCH */
+
+    searchInput.addEventListener(
+      "input",
+      function () {
+
+        const searchText =
+          this.value.toLowerCase();
+
+        movieCards.forEach(
+          function (card) {
+
+            const movieName =
+              card
+              .querySelector("h3")
+              .textContent
+              .toLowerCase();
+
+            if (
+              movieName.includes(searchText)
+            ) {
+
+              card.style.display = "block";
+
+            } else {
+
+              card.style.display = "none";
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+    /* CATEGORY FILTER */
+
+    function filterMovies(category) {
+
+      movieCards.forEach(
+        function (card) {
+
+          const movieCategory =
+            card.getAttribute(
+              "data-category"
+            );
+
+          if (
+            category === "all" ||
+            movieCategory === category
+          ) {
+
+            card.style.display = "block";
+
+          } else {
+
+            card.style.display = "none";
+
+          }
+
+        }
+      );
+
+    }
+
+  </script>
+
+
+</body>
+
+</html>

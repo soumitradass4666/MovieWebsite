@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Three - MovieHub</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#000;color:#fff}
+.container{max-width:700px;margin:auto;padding:20px;text-align:center}
+.poster{width:100%;max-width:500px;border-radius:15px}
+h1{font-size:36px;margin:15px 0}
+.info{color:#ccc;font-size:18px}
+.description{color:#ddd;line-height:1.7;font-size:17px}
+button{border:0;border-radius:10px;padding:14px 20px;font-size:16px;cursor:pointer}
+.trailer-btn{background:#e50914;color:#fff;margin-top:15px}
+.home-btn{background:#222;color:#fff;margin-top:15px}
+#trailerPopup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;align-items:center;justify-content:center;padding:15px}
+.popup-box{width:100%;max-width:650px;background:#15151f;border-radius:20px;padding:20px}
+.popup-header{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.popup-header h2{margin:0;font-size:24px}
+.close-btn{width:50px;height:50px;padding:0;border-radius:50%;background:#ff4444;color:#fff;font-size:30px}
+video{width:100%;margin-top:15px;border-radius:12px;display:block}
+.fullscreen-btn{width:100%;margin-top:12px;background:#e50914;color:#fff}
+.video-fullscreen{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;padding:0!important;background:#000!important;z-index:99999!important;display:flex!important}
+.video-fullscreen .popup-box{width:100%!important;height:100%!important;max-width:none!important;padding:0!important;border-radius:0!important;background:#000!important;display:flex;align-items:center;justify-content:center}
+.video-fullscreen .popup-header,.video-fullscreen .fullscreen-btn{display:none!important}
+.video-fullscreen video{width:100%!important;height:100%!important;margin:0!important;border-radius:0!important;object-fit:contain!important}
+@media(max-width:600px){h1{font-size:30px}.popup-box{padding:15px}.popup-header h2{font-size:20px}}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img class="poster" src="https://picsum.photos/600/800?random=3" alt="Movie Three">
+
+<h1>Movie Three</h1>
+
+<p class="info">Drama • 2025 • ⭐ 8.1/10</p>
+
+<p class="description">
+Movie Three is a fictional drama movie featured on MovieHub.
+Explore its story, genre, rating and other movie information on this page.
+</p>
+
+<button class="trailer-btn" onclick="openTrailer()">▶ Watch Trailer</button>
+<br>
+
+<a href="./index.html">
+<button class="home-btn">← Back to Home</button>
+</a>
+
+</div>
+
+<div id="trailerPopup">
+<div class="popup-box">
+
+<div class="popup-header">
+<h2>🎬 Movie Three - Trailer</h2>
+<button class="close-btn" onclick="closeTrailer()">×</button>
+</div>
+
+<video id="trailerVideo" controls playsinline>
+<source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+</video>
+
+<button class="fullscreen-btn" onclick="makeFullscreen()">⛶ Full Screen</button>
+
+</div>
+</div>
+
+<script>
+function openTrailer(){
+document.getElementById("trailerPopup").style.display="flex";
+}
+
+function closeTrailer(){
+const video=document.getElementById("trailerVideo");
+video.pause();
+video.currentTime=0;
+document.getElementById("trailerPopup").classList.remove("video-fullscreen");
+document.getElementById("trailerPopup").style.display="none";
+}
+
+function makeFullscreen(){
+document.getElementById("trailerPopup").classList.add("video-fullscreen");
+}
+
+document.addEventListener("keydown",function(e){
+if(e.key==="Escape") closeTrailer();
+});
+</script>
+
+</body>
+</html>

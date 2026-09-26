@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact - MovieHub</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0b0f;
+      color: white;
+    }
+
+    nav {
+      background: #15151d;
+      padding: 16px 20px;
+      border-bottom: 1px solid #292936;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 25px;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #ff3d3d;
+      margin-bottom: 20px;
+    }
+
+    .contact-box {
+      background: #15151d;
+      padding: 25px;
+      border-radius: 12px;
+    }
+
+    p {
+      color: #cccccc;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: none;
+      border-radius: 7px;
+      background: #24242f;
+      color: white;
+      outline: none;
+      font-size: 15px;
+    }
+
+    textarea {
+      height: 130px;
+      resize: vertical;
+    }
+
+    button {
+      border: none;
+      background: #ff3d3d;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 7px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      color: #ccc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="./index.html">🎬 MovieHub</a>
+  </nav>
+
+  <div class="container">
+
+    <h1>Contact Us</h1>
+
+    <div class="contact-box">
+
+      <p>
+        Have a question or feedback about MovieHub?
+        Send us a message using the form below.
+      </p>
+
+      <form onsubmit="sendMessage(event)">
+
+        <label for="name">Name</label>
+
+        <input
+          type="text"
+          id="name"
+          placeholder="Enter your name"
+          required
+        >
+
+        <label for="email">Email</label>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          required
+        >
+
+        <label for="message">Message</label>
+
+        <textarea
+          id="message"
+          placeholder="Write your message..."
+          required
+        ></textarea>
+
+        <button type="submit">
+          Send Message
+        </button>
+
+      </form>
+
+      <a href="./index.html" class="back">
+        ← Back to Home
+      </a>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    function sendMessage(event) {
+
+      event.preventDefault();
+
+      alert("Thanks! Your message has been received.");
+
+    }
+
+  </script>
+
+</body>
+</html>
