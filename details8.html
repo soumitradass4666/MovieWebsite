@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Movie Eight - MovieHub</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial;background:#0b0b0f;color:white}
-nav{background:#111118;padding:18px 6%;display:flex;justify-content:space-between}nav a{color:white;text-decoration:none;margin-left:15px}
-main{width:90%;max-width:1000px;margin:50px auto}.box{background:#15151c;padding:30px;border-radius:15px;display:grid;grid-template-columns:300px 1fr;gap:40px}
-img{width:100%;border-radius:10px}h1{font-size:38px;margin-bottom:15px}p{color:#ccc;line-height:1.7;margin:15px 0}.rating{color:#ffd700}
-button,a.btn{background:#e50914;color:white;border:0;padding:12px 18px;border-radius:7px;text-decoration:none;cursor:pointer}.back{background:#292932!important}
-.modal{display:none;position:fixed;inset:0;background:#000e;align-items:center;justify-content:center}.modal div{width:90%;max-width:850px;position:relative}video{width:100%;background:#000}
-.close{position:absolute;right:0;bottom:-45px}.full{position:absolute;left:0;bottom:-45px;background:#292932!important}footer{text-align:center;padding:30px;color:#888}
-@media(max-width:700px){.box{grid-template-columns:1fr}h1{font-size:30px}}
+nav{background:#111118;padding:18px 6%;display:flex;justify-content:space-between;border-bottom:1px solid #25252e}nav a{color:#ddd;text-decoration:none;margin-left:18px}.logo{font-size:24px;font-weight:bold}.logo span{color:#e50914}
+main{width:90%;max-width:1050px;margin:50px auto}.box{background:#15151c;padding:30px;border-radius:15px;display:grid;grid-template-columns:300px 1fr;gap:40px}.poster{width:100%;border-radius:10px}h1{font-size:40px}.meta{color:#aaa;line-height:2;margin-top:15px}.rating{color:#ffd700;font-weight:bold}.desc{color:#ccc;line-height:1.7;margin:20px 0}
+button,.btn{background:#e50914;color:white;border:0;padding:12px 18px;border-radius:7px;text-decoration:none;cursor:pointer;font-weight:bold}.back{background:#292932;margin-left:8px}.related{margin-top:55px}.movies{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:20px}.card{background:#15151c;padding:12px;border-radius:10px;text-decoration:none;color:white}.card img{width:100%;border-radius:8px}.card p{margin-top:8px}
+.modal{display:none;position:fixed;inset:0;background:#000e;align-items:center;justify-content:center}.modal-box{width:90%;max-width:850px;position:relative}video{width:100%;background:#000}.close,.full{position:absolute;bottom:-48px}.close{right:0}.full{left:0;background:#292932}footer{text-align:center;padding:30px;color:#888;margin-top:60px}
+@media(max-width:700px){.box{grid-template-columns:1fr;padding:20px}h1{font-size:30px}.movies{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
-<nav><b>🎬 Movie<span style="color:#e50914">Hub</span></b><div><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></nav>
-<main><div class="box">
-<img src="https://picsum.photos/600/800?random=8">
-<div><h1>Movie Eight</h1><p>🎭 Genre: Drama</p><p>📅 Release Year: 2025</p><p class="rating">⭐ 8.4/10</p><p>A fictional drama movie with memorable characters and an engaging story.</p><button onclick="openTrailer()">▶ Watch Trailer</button> <a class="btn back" href="index.html">← Back</a></div>
-</div></main>
-<div class="modal" id="modal"><div><video id="video" controls playsinline><source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video><button class="full" onclick="full()">⛶ Full Screen</button><button class="close" onclick="closeTrailer()">✕ Close</button></div></div>
-<footer>© 2025 MovieHub</footer>
+<nav><div class="logo">🎬 Movie<span>Hub</span></div><div><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></nav>
+<main>
+<div class="box"><img class="poster" src="https://picsum.photos/600/800?random=8"><div>
+<h1>Movie Eight</h1><div class="meta">🎭 Genre: Drama<br>📅 Release Year: 2025<br><span class="rating">⭐ 8.4/10</span></div>
+<p class="desc">Movie Eight is a fictional drama movie with memorable characters and an engaging story.</p>
+<button onclick="openTrailer()">▶ Watch Trailer</button><a class="btn back" href="index.html">← Back</a>
+</div></div>
+<div class="related"><h2>🎬 Related Movies</h2><div class="movies">
+<a class="card" href="details.html"><img src="https://picsum.photos/300/450?random=1"><p>Movie One</p></a>
+<a class="card" href="details2.html"><img src="https://picsum.photos/300/450?random=2"><p>Movie Two</p></a>
+<a class="card" href="details3.html"><img src="https://picsum.photos/300/450?random=3"><p>Movie Three</p></a>
+<a class="card" href="details4.html"><img src="https://picsum.photos/300/450?random=4"><p>Movie Four</p></a>
+</div></div>
+</main>
+<div class="modal" id="modal"><div class="modal-box"><video id="video" controls><source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video><button class="full" onclick="full()">⛶ Full Screen</button><button class="close" onclick="closeTrailer()">✕ Close</button></div></div>
+<footer>© 2025 MovieHub • Movie information & entertainment website</footer>
 <script>
-let m=document.getElementById("modal"),v=document.getElementById("video");
-function openTrailer(){m.style.display="flex";v.play()}function closeTrailer(){v.pause();m.style.display="none"}function full(){v.requestFullscreen()}
+let m=document.getElementById("modal"),v=document.getElementById("video");function openTrailer(){m.style.display="flex";v.play()}function closeTrailer(){v.pause();m.style.display="none"}function full(){if(v.requestFullscreen)v.requestFullscreen()}
 </script>
 </body>
 </html>
