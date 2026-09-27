@@ -3,98 +3,506 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Movie One - MovieHub</title>
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#000;color:#fff}
-.container{max-width:700px;margin:auto;padding:20px;text-align:center}
-.poster{width:100%;max-width:500px;border-radius:15px}
-h1{font-size:36px;margin:15px 0}
-.info{color:#ccc;font-size:18px}
-.description{color:#ddd;line-height:1.7;font-size:17px}
-button{border:0;border-radius:10px;padding:14px 20px;font-size:16px;cursor:pointer}
-.trailer-btn{background:#e50914;color:#fff;margin-top:15px}
-.home-btn{background:#222;color:#fff;margin-top:15px}
-#trailerPopup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;align-items:center;justify-content:center;padding:15px}
-.popup-box{width:100%;max-width:650px;background:#15151f;border-radius:20px;padding:20px}
-.popup-header{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.popup-header h2{margin:0;font-size:24px}
-.close-btn{width:50px;height:50px;padding:0;border-radius:50%;background:#ff4444;color:#fff;font-size:30px}
-video{width:100%;margin-top:15px;border-radius:12px;display:block}
-.fullscreen-btn{width:100%;margin-top:12px;background:#e50914;color:#fff}
-.video-fullscreen{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;padding:0!important;background:#000!important;z-index:99999!important;display:flex!important}
-.video-fullscreen .popup-box{width:100%!important;height:100%!important;max-width:none!important;padding:0!important;border-radius:0!important;background:#000!important;display:flex;align-items:center;justify-content:center}
-.video-fullscreen .popup-header,.video-fullscreen .fullscreen-btn{display:none!important}
-.video-fullscreen video{width:100%!important;height:100%!important;margin:0!important;border-radius:0!important;object-fit:contain!important}
-@media(max-width:600px){h1{font-size:30px}.popup-box{padding:15px}.popup-header h2{font-size:20px}}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0b0f;
+    color: white;
+}
+
+/* NAVBAR */
+.navbar {
+    background: #111118;
+    padding: 16px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #25252e;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #e50914;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: #e50914;
+}
+
+/* MOVIE DETAILS */
+.movie-container {
+    width: 88%;
+    max-width: 1050px;
+    margin: 55px auto;
+}
+
+.movie-details {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 45px;
+    background: #15151c;
+    padding: 30px;
+    border-radius: 14px;
+    border: 1px solid #24242d;
+}
+
+.poster {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+}
+
+.movie-info h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.meta {
+    color: #aaa;
+    margin-bottom: 18px;
+    line-height: 1.8;
+}
+
+.rating {
+    color: #ffd700;
+    font-weight: bold;
+}
+
+.description {
+    color: #ccc;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* BUTTONS */
+.buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    color: white;
+    background: #e50914;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ff1b26;
+    transform: translateY(-2px);
+}
+
+.back-btn {
+    background: #292932;
+}
+
+.back-btn:hover {
+    background: #393944;
+}
+
+/* TRAILER MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    width: 95%;
+    max-width: 900px;
+    position: relative;
+}
+
+.modal video {
+    width: 100%;
+    max-height: 75vh;
+    display: block;
+    background: black;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.close-btn {
+    position: absolute;
+    right: 0;
+    bottom: -52px;
+    background: #e50914;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.fullscreen-btn {
+    position: absolute;
+    left: 0;
+    bottom: -52px;
+    background: #292932;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* FAKE FULLSCREEN */
+.video-fullscreen {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    background: black !important;
+    z-index: 10000 !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-fullscreen video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+}
+
+.video-fullscreen .close-btn {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 10002;
+}
+
+.video-fullscreen .fullscreen-btn {
+    position: fixed;
+    left: 15px;
+    bottom: 15px;
+    z-index: 10002;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 60px;
+    padding: 30px;
+    text-align: center;
+    background: #111118;
+    color: #888;
+    border-top: 1px solid #24242d;
+}
+
+footer strong {
+    color: white;
+}
+
+footer span {
+    color: #e50914;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 14px 5%;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .movie-container {
+        width: 92%;
+        margin: 30px auto;
+    }
+
+    .movie-details {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 20px;
+    }
+
+    .movie-info h1 {
+        font-size: 30px;
+    }
+
+    .poster {
+        max-width: 330px;
+        margin: auto;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- NAVBAR -->
+<nav class="navbar">
 
-<img class="poster" src="https://picsum.photos/600/800?random=1" alt="Movie One">
+    <div class="logo">
+        🎬 Movie<span>Hub</span>
+    </div>
 
-<h1>Movie One</h1>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
 
-<p class="info">Action • 2025 • ⭐ 8.5/10</p>
+</nav>
 
-<p class="description">
-Movie One is a fictional action movie featured on MovieHub.
-Explore its story, genre, rating and other movie information on this page.
-</p>
 
-<button class="trailer-btn" onclick="openTrailer()">▶ Watch Trailer</button>
-<br>
+<!-- MOVIE -->
+<main class="movie-container">
 
-<a href="./index.html">
-<button class="home-btn">← Back to Home</button>
-</a>
+    <div class="movie-details">
+
+        <div>
+            <img
+                class="poster"
+                src="https://picsum.photos/600/800?random=1"
+                alt="Movie One Poster"
+            >
+        </div>
+
+
+        <div class="movie-info">
+
+            <h1>Movie One</h1>
+
+            <div class="meta">
+
+                <div>🎭 Genre: Action</div>
+
+                <div>📅 Release Year: 2025</div>
+
+                <div>
+                    <span class="rating">
+                        ⭐ 8.5/10
+                    </span>
+                </div>
+
+            </div>
+
+
+            <p class="description">
+
+                Movie One is an exciting action movie filled
+                with adventure, mystery and unexpected moments.
+                Explore the story and learn more about this
+                fictional movie on MovieHub.
+
+            </p>
+
+
+            <div class="buttons">
+
+                <button
+                    class="btn"
+                    onclick="openTrailer()"
+                >
+                    ▶ Watch Trailer
+                </button>
+
+                <a
+                    href="index.html"
+                    class="btn back-btn"
+                >
+                    ← Back to Home
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- TRAILER MODAL -->
+<div
+    class="modal"
+    id="trailerModal"
+>
+
+    <div
+        class="modal-content"
+        id="videoContainer"
+    >
+
+        <video
+            id="trailerVideo"
+            controls
+            playsinline
+        >
+
+            <source
+                src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                type="video/mp4"
+            >
+
+            Your browser does not support video playback.
+
+        </video>
+
+
+        <button
+            class="fullscreen-btn"
+            onclick="toggleFullscreen()"
+        >
+            ⛶ Full Screen
+        </button>
+
+
+        <button
+            class="close-btn"
+            onclick="closeTrailer()"
+        >
+            ✕ Close
+        </button>
+
+    </div>
 
 </div>
 
-<div id="trailerPopup">
 
-<div class="popup-box">
+<!-- FOOTER -->
+<footer>
 
-<div class="popup-header">
-<h2>🎬 Movie One - Trailer</h2>
-<button class="close-btn" onclick="closeTrailer()">×</button>
-</div>
+    <p>
+        © 2025
+        <strong>
+            Movie<span>Hub</span>
+        </strong>
+    </p>
 
-<video id="trailerVideo" controls playsinline>
-<source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
-</video>
+    <p>
+        Movie information & entertainment website
+    </p>
 
-<button class="fullscreen-btn" onclick="makeFullscreen()">
-⛶ Full Screen
-</button>
+</footer>
 
-</div>
-</div>
 
 <script>
-function openTrailer(){
-document.getElementById("trailerPopup").style.display="flex";
+
+const modal =
+    document.getElementById("trailerModal");
+
+const video =
+    document.getElementById("trailerVideo");
+
+const videoContainer =
+    document.getElementById("videoContainer");
+
+
+function openTrailer() {
+
+    modal.style.display = "flex";
+
+    video.currentTime = 0;
+
+    video.play();
+
 }
 
-function closeTrailer(){
-const video=document.getElementById("trailerVideo");
-video.pause();
-video.currentTime=0;
-document.getElementById("trailerPopup").classList.remove("video-fullscreen");
-document.getElementById("trailerPopup").style.display="none";
+
+function closeTrailer() {
+
+    video.pause();
+
+    video.currentTime = 0;
+
+    modal.style.display = "none";
+
+    videoContainer.classList.remove(
+        "video-fullscreen"
+    );
+
 }
 
-function makeFullscreen(){
-document.getElementById("trailerPopup").classList.add("video-fullscreen");
+
+function toggleFullscreen() {
+
+    videoContainer.classList.toggle(
+        "video-fullscreen"
+    );
+
 }
 
-document.addEventListener("keydown",function(e){
-if(e.key==="Escape") closeTrailer();
-});
+
+/* Close when clicking outside video */
+modal.addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === modal) {
+            closeTrailer();
+        }
+
+    }
+);
+
+
+/* ESC key */
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            closeTrailer();
+
+        }
+
+    }
+);
+
 </script>
 
 </body>
