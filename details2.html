@@ -2,136 +2,58 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Movie Two - MovieHub</title>
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#0b0b0f;color:white}
-.navbar{background:#111118;padding:16px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #25252e}
-.logo{font-size:25px;font-weight:bold}.logo span{color:#e50914}
-.nav-links{display:flex;gap:20px}.nav-links a{color:#ddd;text-decoration:none;font-size:14px}
-.nav-links a:hover{color:#e50914}
-.movie-container{width:88%;max-width:1050px;margin:55px auto}
-.movie-details{display:grid;grid-template-columns:320px 1fr;gap:45px;background:#15151c;padding:30px;border-radius:14px;border:1px solid #24242d}
-.poster{width:100%;border-radius:10px;display:block}
-.movie-info h1{font-size:38px;margin-bottom:15px}
-.meta{color:#aaa;margin-bottom:18px;line-height:1.8}
-.rating{color:#ffd700;font-weight:bold}
-.description{color:#ccc;line-height:1.7;margin-bottom:25px}
-.buttons{display:flex;gap:12px;flex-wrap:wrap}
-.btn{border:none;padding:12px 20px;border-radius:7px;color:white;background:#e50914;cursor:pointer;text-decoration:none;font-size:14px;font-weight:bold}
-.btn:hover{background:#ff1b26}
-.back-btn{background:#292932}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;padding:20px}
-.modal-content{width:95%;max-width:900px;position:relative}
-.modal video{width:100%;max-height:75vh;display:block;background:black;border-radius:8px;object-fit:contain}
-.close-btn,.fullscreen-btn{position:absolute;bottom:-52px;border:0;color:white;padding:11px 18px;border-radius:6px;cursor:pointer;font-weight:bold}
-.close-btn{right:0;background:#e50914}.fullscreen-btn{left:0;background:#292932}
-.video-fullscreen{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;max-width:none!important;background:black!important;z-index:10000!important;display:flex;align-items:center;justify-content:center}
-.video-fullscreen video{width:100%!important;height:100%!important;object-fit:contain!important}
-.video-fullscreen .close-btn{position:fixed;right:15px;bottom:15px;z-index:10002}
-.video-fullscreen .fullscreen-btn{position:fixed;left:15px;bottom:15px;z-index:10002}
-footer{margin-top:60px;padding:30px;text-align:center;background:#111118;color:#888;border-top:1px solid #24242d}
-footer strong{color:white}footer span{color:#e50914}
-@media(max-width:700px){
-.navbar{padding:14px 5%}.logo{font-size:21px}.nav-links{gap:10px}.nav-links a{font-size:12px}
-.movie-container{width:92%;margin:30px auto}.movie-details{grid-template-columns:1fr;gap:25px;padding:20px}
-.movie-info h1{font-size:30px}.poster{max-width:330px;margin:auto}
-}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial;background:#0b0b0f;color:white}
+nav{background:#111118;padding:18px 6%;display:flex;justify-content:space-between;border-bottom:1px solid #25252e}
+.logo{font-size:24px;font-weight:bold}.logo span{color:#e50914}
+nav a{color:#ddd;text-decoration:none;margin-left:18px}
+main{width:90%;max-width:1050px;margin:50px auto}.box{background:#15151c;padding:30px;border-radius:15px;display:grid;grid-template-columns:300px 1fr;gap:40px}
+.poster{width:100%;border-radius:10px}h1{font-size:40px;margin-bottom:18px}.meta{color:#aaa;line-height:2}.rating{color:#ffd700;font-weight:bold}.desc{color:#ccc;line-height:1.7;margin:20px 0}
+button,.btn{background:#e50914;color:white;border:0;padding:12px 18px;border-radius:7px;text-decoration:none;cursor:pointer;font-weight:bold}.back{background:#292932;margin-left:8px}
+.related{margin-top:55px}.related h2{margin-bottom:20px}.movies{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#15151c;padding:12px;border-radius:10px;text-decoration:none;color:white}.card img{width:100%;border-radius:8px}.card p{margin-top:8px}
+.modal{display:none;position:fixed;inset:0;background:#000e;align-items:center;justify-content:center;z-index:99}.modal-box{width:90%;max-width:850px;position:relative}video{width:100%;background:#000;border-radius:8px}.close,.full{position:absolute;bottom:-48px}.close{right:0}.full{left:0;background:#292932}
+footer{text-align:center;padding:30px;color:#888;margin-top:60px;border-top:1px solid #24242d}
+@media(max-width:700px){.box{grid-template-columns:1fr;padding:20px}h1{font-size:30px}.poster{max-width:330px}.movies{grid-template-columns:repeat(2,1fr)}nav{padding:15px 4%}nav a{margin-left:8px;font-size:12px}}
 </style>
 </head>
-
 <body>
 
-<nav class="navbar">
-<div class="logo">🎬 Movie<span>Hub</span></div>
-<div class="nav-links">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-</div>
-</nav>
+<nav><div class="logo">🎬 Movie<span>Hub</span></div><div><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></nav>
 
-<main class="movie-container">
-<div class="movie-details">
-
+<main>
+<div class="box">
+<img class="poster" src="https://picsum.photos/600/800?random=2">
 <div>
-<img class="poster" src="https://picsum.photos/600/800?random=2" alt="Movie Two Poster">
-</div>
-
-<div class="movie-info">
 <h1>Movie Two</h1>
-
-<div class="meta">
-<div>🎭 Genre: Comedy</div>
-<div>📅 Release Year: 2025</div>
-<div><span class="rating">⭐ 7.9/10</span></div>
-</div>
-
-<p class="description">
-Movie Two is a fun comedy movie filled with entertaining
-characters, funny situations and memorable moments.
-Explore this fictional movie on MovieHub.
-</p>
-
-<div class="buttons">
-<button class="btn" onclick="openTrailer()">▶ Watch Trailer</button>
-<a href="index.html" class="btn back-btn">← Back to Home</a>
+<div class="meta">🎭 Genre: Comedy<br>📅 Release Year: 2025<br><span class="rating">⭐ 7.9/10</span></div>
+<p class="desc">Movie Two is a fun fictional comedy movie filled with entertaining characters and funny moments.</p>
+<button onclick="openTrailer()">▶ Watch Trailer</button>
+<a class="btn back" href="index.html">← Back</a>
 </div>
 </div>
 
-</div>
+<div class="related"><h2>🎬 Related Movies</h2><div class="movies">
+<a class="card" href="details3.html"><img src="https://picsum.photos/300/450?random=3"><p>Movie Three</p></a>
+<a class="card" href="details4.html"><img src="https://picsum.photos/300/450?random=4"><p>Movie Four</p></a>
+<a class="card" href="details5.html"><img src="https://picsum.photos/300/450?random=5"><p>Movie Five</p></a>
+<a class="card" href="details6.html"><img src="https://picsum.photos/300/450?random=6"><p>Movie Six</p></a>
+</div></div>
 </main>
 
-<div class="modal" id="trailerModal">
-<div class="modal-content" id="videoContainer">
+<div class="modal" id="modal"><div class="modal-box">
+<video id="video" controls playsinline><source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>
+<button class="full" onclick="full()">⛶ Full Screen</button><button class="close" onclick="closeTrailer()">✕ Close</button>
+</div></div>
 
-<video id="trailerVideo" controls playsinline>
-<source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
-</video>
-
-<button class="fullscreen-btn" onclick="toggleFullscreen()">⛶ Full Screen</button>
-<button class="close-btn" onclick="closeTrailer()">✕ Close</button>
-
-</div>
-</div>
-
-<footer>
-<p>© 2025 <strong>Movie<span>Hub</span></strong></p>
-<p>Movie information & entertainment website</p>
-</footer>
+<footer>© 2025 MovieHub • Movie information & entertainment website</footer>
 
 <script>
-const modal=document.getElementById("trailerModal");
-const video=document.getElementById("trailerVideo");
-const videoContainer=document.getElementById("videoContainer");
-
-function openTrailer(){
-modal.style.display="flex";
-video.currentTime=0;
-video.play();
-}
-
-function closeTrailer(){
-video.pause();
-video.currentTime=0;
-modal.style.display="none";
-videoContainer.classList.remove("video-fullscreen");
-}
-
-function toggleFullscreen(){
-videoContainer.classList.toggle("video-fullscreen");
-}
-
-modal.addEventListener("click",function(e){
-if(e.target===modal)closeTrailer();
-});
-
-document.addEventListener("keydown",function(e){
-if(e.key==="Escape")closeTrailer();
-});
+let m=document.getElementById("modal"),v=document.getElementById("video");
+function openTrailer(){m.style.display="flex";v.currentTime=0;v.play()}
+function closeTrailer(){v.pause();v.currentTime=0;m.style.display="none"}
+function full(){if(v.requestFullscreen)v.requestFullscreen()}
 </script>
-
 </body>
 </html>
