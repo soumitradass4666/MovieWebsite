@@ -1,129 +1,867 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>About - MovieHub</title>
+<meta charset="UTF-8">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>About - Soumitra MovieHub</title>
+
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background: #0b0b0f;
+
+    color: white;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 16px 7%;
+
+    background:
+        rgba(15, 15, 20, 0.96);
+
+    backdrop-filter: blur(10px);
+
+    border-bottom:
+        1px solid #292932;
+}
+
+.logo {
+
+    font-size: 24px;
+
+    font-weight: bold;
+}
+
+.logo span {
+
+    color: #ff3d81;
+}
+
+.nav-links {
+
+    display: flex;
+
+    gap: 25px;
+}
+
+.nav-links a {
+
+    color: #ddd;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+
+    color: #ff3d81;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.about-hero {
+
+    min-height: 390px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 60px 7%;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #29234a,
+            #0b0b0f 70%
+        );
+}
+
+.about-hero-content {
+
+    max-width: 750px;
+}
+
+.about-icon {
+
+    font-size: 65px;
+
+    margin-bottom: 15px;
+
+    animation:
+        floating 2s ease-in-out infinite;
+}
+
+@keyframes floating {
+
+    0%, 100% {
+
+        transform:
+            translateY(0);
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b0b0f;
-      color: white;
+    50% {
+
+        transform:
+            translateY(-10px);
+    }
+}
+
+.about-hero h1 {
+
+    font-size: 48px;
+
+    margin-bottom: 15px;
+}
+
+.about-hero h1 span {
+
+    color: #ff3d81;
+}
+
+.about-hero p {
+
+    color: #aaa;
+
+    font-size: 17px;
+}
+
+
+/* =========================
+   ABOUT CONTENT
+========================= */
+
+.about-section {
+
+    padding: 60px 7%;
+}
+
+.about-container {
+
+    max-width: 1000px;
+
+    margin: auto;
+}
+
+.about-box {
+
+    background: #15151b;
+
+    border:
+        1px solid #282832;
+
+    border-radius: 15px;
+
+    padding: 30px;
+
+    margin-bottom: 25px;
+
+    transition: 0.3s;
+}
+
+.about-box:hover {
+
+    border-color: #ff3d81;
+
+    transform:
+        translateY(-4px);
+}
+
+.about-box h2 {
+
+    font-size: 26px;
+
+    margin-bottom: 15px;
+
+    color: #ff3d81;
+}
+
+.about-box p {
+
+    color: #bbb;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.features-title {
+
+    text-align: center;
+
+    font-size: 32px;
+
+    margin:
+        20px 0 30px;
+}
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.feature-card {
+
+    background: #15151b;
+
+    border:
+        1px solid #282832;
+
+    border-radius: 14px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color: #ff3d81;
+}
+
+.feature-icon {
+
+    font-size: 42px;
+
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+
+    margin-bottom: 10px;
+
+    font-size: 19px;
+}
+
+.feature-card p {
+
+    color: #999;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   CREATOR
+========================= */
+
+.creator {
+
+    text-align: center;
+
+    padding: 45px 20px;
+
+    margin-top: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #18151f,
+            #111116
+        );
+
+    border:
+        1px solid #282832;
+
+    border-radius: 15px;
+}
+
+.creator-icon {
+
+    font-size: 55px;
+
+    margin-bottom: 10px;
+}
+
+.creator h2 {
+
+    font-size: 28px;
+
+    margin-bottom: 10px;
+}
+
+.creator h2 span {
+
+    color: #ff3d81;
+}
+
+.creator p {
+
+    color: #999;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   HOME BUTTON
+========================= */
+
+.home-btn {
+
+    display: inline-block;
+
+    padding:
+        12px 22px;
+
+    background: #ff3d81;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.home-btn:hover {
+
+    background: #e52f70;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    margin-top: 20px;
+
+    padding: 35px 7%;
+
+    background: #111116;
+
+    border-top:
+        1px solid #292932;
+
+    text-align: center;
+
+    color: #888;
+}
+
+footer strong {
+
+    color: #ff3d81;
+}
+
+.footer-links {
+
+    margin-top: 15px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+}
+
+.footer-links a {
+
+    color: #aaa;
+
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+
+    color: #ff3d81;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+
+        padding:
+            14px 5%;
     }
 
-    nav {
-      background: #15151d;
-      padding: 16px 20px;
-      border-bottom: 1px solid #292936;
+    .logo {
+
+        font-size: 20px;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
+    .nav-links {
+
+        gap: 12px;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 25px;
+    .nav-links a {
+
+        font-size: 13px;
     }
 
-    h1 {
-      font-size: 36px;
-      color: #ff3d3d;
-      margin-bottom: 20px;
+    .about-hero {
+
+        min-height: 350px;
+
+        padding:
+            50px 5%;
     }
 
-    h2 {
-      margin-top: 30px;
-      margin-bottom: 10px;
+    .about-hero h1 {
+
+        font-size: 35px;
     }
 
-    p {
-      color: #cccccc;
-      line-height: 1.8;
-      margin-bottom: 15px;
+    .about-hero p {
+
+        font-size: 15px;
     }
 
-    .box {
-      background: #15151d;
-      padding: 25px;
-      border-radius: 12px;
-      margin-top: 20px;
+    .about-section {
+
+        padding:
+            45px 5%;
     }
 
-    .back {
-      display: inline-block;
-      margin-top: 20px;
-      background: #ff3d3d;
-      color: white;
-      text-decoration: none;
-      padding: 11px 18px;
-      border-radius: 7px;
+    .about-box {
+
+        padding: 22px;
     }
-  </style>
+
+    .features {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .features-title {
+
+        font-size: 27px;
+    }
+
+    .footer-links {
+
+        gap: 15px;
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-  <nav>
-    <a href="./index.html">🎬 MovieHub</a>
-  </nav>
 
-  <div class="container">
+<!-- =========================
+     NAVBAR
+========================= -->
 
-    <h1>About MovieHub</h1>
+<nav class="navbar">
 
-    <div class="box">
+    <div class="logo">
 
-      <p>
-        Welcome to MovieHub!
-      </p>
-
-      <p>
-        MovieHub is a movie information website where
-        visitors can explore movie titles, genres, ratings
-        and descriptions.
-      </p>
-
-      <h2>🎬 What We Offer</h2>
-
-      <p>
-        Browse movies, search for titles and filter movies
-        by different genres.
-      </p>
-
-      <h2>⭐ Movie Information</h2>
-
-      <p>
-        MovieHub provides fictional sample movie information
-        for this website project.
-      </p>
-
-      <h2>📌 Important</h2>
-
-      <p>
-        MovieHub does not provide unauthorized movie downloads
-        or pirated streaming. Trailer links can be connected
-        to official sources.
-      </p>
-
-      <a href="./index.html" class="back">
-        ← Back to Home
-      </a>
+        🎬 <span>Soumitra</span> MovieHub
 
     </div>
 
-  </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     ABOUT HERO
+========================= -->
+
+<section class="about-hero">
+
+    <div class="about-hero-content">
+
+        <div class="about-icon">
+            🎬
+        </div>
+
+        <h1>
+
+            About
+            <span>Soumitra MovieHub</span>
+
+        </h1>
+
+        <p>
+
+            Your simple destination for
+            movie information, ratings,
+            genres and more.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT CONTENT
+========================= -->
+
+<section class="about-section">
+
+    <div class="about-container">
+
+
+        <!-- ABOUT WEBSITE -->
+
+        <div class="about-box">
+
+            <h2>
+                🎥 About Our Website
+            </h2>
+
+            <p>
+
+                Welcome to Soumitra MovieHub,
+                a movie information website
+                created to make discovering
+                movies simple and enjoyable.
+
+                Here you can explore different
+                movies, check their genres,
+                release years, ratings and
+                detailed information.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- OUR PURPOSE -->
+
+        <div class="about-box">
+
+            <h2>
+                🎯 Our Purpose
+            </h2>
+
+            <p>
+
+                The purpose of this website is
+                to provide an easy-to-use place
+                where movie lovers can explore
+                movie information in a clean
+                and simple interface.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- FEATURES -->
+
+        <h2 class="features-title">
+
+            ✨ Website Features
+
+        </h2>
+
+
+        <div class="features">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🔍
+                </div>
+
+                <h3>
+                    Movie Search
+                </h3>
+
+                <p>
+
+                    Quickly search for movies
+                    using the search box.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🎭
+                </div>
+
+                <h3>
+                    Genre Filter
+                </h3>
+
+                <p>
+
+                    Explore movies by genres
+                    such as Action, Drama,
+                    Comedy and more.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ⭐
+                </div>
+
+                <h3>
+                    Ratings
+                </h3>
+
+                <p>
+
+                    Check movie ratings and
+                    basic movie information.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Mobile Friendly
+                </h3>
+
+                <p>
+
+                    The website is designed
+                    to work on phones,
+                    tablets and computers.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🎞️
+                </div>
+
+                <h3>
+                    Movie Details
+                </h3>
+
+                <p>
+
+                    Open individual movie
+                    pages to see more
+                    information.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Simple Design
+                </h3>
+
+                <p>
+
+                    A clean and easy-to-use
+                    interface for visitors.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- CREATOR -->
+
+        <div class="creator">
+
+            <div class="creator-icon">
+                👨‍💻
+            </div>
+
+            <h2>
+
+                Created by
+                <span>Soumitra</span>
+
+            </h2>
+
+            <p>
+
+                Thank you for visiting
+                Soumitra MovieHub.
+
+            </p>
+
+            <a
+                href="index.html"
+                class="home-btn">
+
+                🏠 Back to Home
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+
+        © 2025
+        <strong>Soumitra MovieHub</strong>.
+        All Rights Reserved.
+
+    </p>
+
+
+    <div class="footer-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </div>
+
+</footer>
+
 
 </body>
+
 </html>
